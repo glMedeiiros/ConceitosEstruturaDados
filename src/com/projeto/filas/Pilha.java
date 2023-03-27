@@ -33,4 +33,26 @@ public class Pilha {
     public boolean isEmpty(){
         return refNoEntradaPilha == null ? true : false;
     }
+
+
+    @Override
+    public String toString() {
+        String stringRetorno = "---------------\n"; //Concatena com os valores abaixo
+        stringRetorno += "    Pilha\n";
+        stringRetorno += "---------------\n";
+
+        No noAuxiliar = refNoEntradaPilha; //Pega referencia do valor no topo da pilha
+
+        while(true){
+            if (noAuxiliar != null){ //
+                stringRetorno += "[No{dado= " + noAuxiliar.getDado() + "}]\n";
+                noAuxiliar = noAuxiliar.getRefNo();
+            }else{
+                break;
+            }
+        }
+        stringRetorno += "===============";
+
+        return stringRetorno;
+    }
 }
