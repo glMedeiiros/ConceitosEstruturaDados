@@ -1,22 +1,22 @@
 package com.projeto.filas;
 
-public class Fila {
+public class Fila<T> {
 
-    private No refNoEntradaFila; // Entrada sempre pelo final na FILA
+    private No<T> refNoEntradaFila; // Entrada sempre pelo final na FILA
 
     public Fila() {
         refNoEntradaFila = null;
     }
 
-    public void enqueue(Object obj){ //Refatoracao do No embutido direto na classe Fila
-        No novoNo = new No(obj);
+    public void enqueue(T obj){ //Refatoracao do No embutido direto na classe Fila
+        No<T> novoNo = new No(obj);
         novoNo.setRefNo(refNoEntradaFila); //Set referecia do novoNo para o primeiro valor(Object).
         refNoEntradaFila = novoNo;
     }
 
-    public Object first() { //Retorna o primeiro da fila / Refatoracao em retornar No para retornar object
+    public T first() { //Retorna o primeiro da fila / Refatoracao em retornar No para retornar object
         if(!this.isEmpty()){
-            No primeiroNo = refNoEntradaFila; //Pega referencia do ultimo da fila;
+            No<T> primeiroNo = refNoEntradaFila; //Pega referencia do ultimo da fila;
 
             while(true){
                 if(primeiroNo.getRefNo() != null){
@@ -25,15 +25,15 @@ public class Fila {
                     break;
                 }
             }
-            return primeiroNo.getObject();
+            return (T) primeiroNo.getObject();
         }
         return null;
     }
 
-    public Object dequeue() {//Retirar o primeiro valor da FILA / Refatoracao em retornar No para retornar object
+    public T dequeue() {//Retirar o primeiro valor da FILA / Refatoracao em retornar No para retornar object
         if(!this.isEmpty()){
-            No primeiroNo = refNoEntradaFila;
-            No noAuxiliar = refNoEntradaFila;
+            No<T> primeiroNo = refNoEntradaFila;
+            No<T> noAuxiliar = refNoEntradaFila;
 
             while(true){
                 if(primeiroNo.getRefNo() != null){
@@ -44,7 +44,7 @@ public class Fila {
                     break;
                 }
             }
-            return primeiroNo.getObject();
+            return (T) primeiroNo.getObject();
         }
         return null;
     }
@@ -56,7 +56,7 @@ public class Fila {
     @Override
     public String toString() {
        String stringRetorno = "";
-       No noAuxiliar = refNoEntradaFila;
+       No<T> noAuxiliar = refNoEntradaFila;
 
        if(refNoEntradaFila != null) {
            while (true){

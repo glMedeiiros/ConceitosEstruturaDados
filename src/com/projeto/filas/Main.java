@@ -3,11 +3,11 @@ package com.projeto.filas;
 public class Main {
     public static void main(String[] args) {
 
-        Fila minhaFila = new Fila();
+        Fila<String> minhaFila = new Fila<>();
 
         minhaFila.enqueue("Primeiro");
-        minhaFila.enqueue(2);
-        minhaFila.enqueue('T');
+        minhaFila.enqueue("Segundo");
+        minhaFila.enqueue("Terceiro");
 
 
         System.out.println(minhaFila);
@@ -19,7 +19,7 @@ public class Main {
 
         System.out.println(minhaFila);
 
-        minhaFila.enqueue("teste2");
+        minhaFila.enqueue("Quarto");
 
         System.out.println(minhaFila);
     }
