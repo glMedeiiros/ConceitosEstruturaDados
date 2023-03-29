@@ -5,9 +5,9 @@ public class Main {
 
         Fila minhaFila = new Fila();
 
-        minhaFila.enqueue(new No("Primeiro"));
-        minhaFila.enqueue(new No(2));
-        minhaFila.enqueue(new No('T'));
+        minhaFila.enqueue("Primeiro");
+        minhaFila.enqueue(2);
+        minhaFila.enqueue('T');
 
 
         System.out.println(minhaFila);
@@ -19,7 +19,7 @@ public class Main {
 
         System.out.println(minhaFila);
 
-        minhaFila.enqueue(new No("teste2"));
+        minhaFila.enqueue("teste2");
 
         System.out.println(minhaFila);
     }

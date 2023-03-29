@@ -8,12 +8,13 @@ public class Fila {
         refNoEntradaFila = null;
     }
 
-    public void enqueue(No novoNo){
+    public void enqueue(Object obj){ //Refatoracao do No embutido direto na classe Fila
+        No novoNo = new No(obj);
         novoNo.setRefNo(refNoEntradaFila); //Set referecia do novoNo para o primeiro valor(Object).
         refNoEntradaFila = novoNo;
     }
 
-    public No first() { //Retorna o primeiro da fila
+    public Object first() { //Retorna o primeiro da fila / Refatoracao em retornar No para retornar object
         if(!this.isEmpty()){
             No primeiroNo = refNoEntradaFila; //Pega referencia do ultimo da fila;
 
@@ -24,12 +25,12 @@ public class Fila {
                     break;
                 }
             }
-            return primeiroNo;
+            return primeiroNo.getObject();
         }
         return null;
     }
 
-    public No dequeue() {//Retirar o primeiro valor da FILA
+    public Object dequeue() {//Retirar o primeiro valor da FILA / Refatoracao em retornar No para retornar object
         if(!this.isEmpty()){
             No primeiroNo = refNoEntradaFila;
             No noAuxiliar = refNoEntradaFila;
@@ -43,7 +44,7 @@ public class Fila {
                     break;
                 }
             }
-            return primeiroNo;
+            return primeiroNo.getObject();
         }
         return null;
     }
