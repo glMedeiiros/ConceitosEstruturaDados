@@ -3,8 +3,8 @@ package com.projeto.listaduplamenteencadeada;
 public class NoDuplo<T> {
 
     private T conteudo;
-    private NoDuplo<T> noProximo;
-    private NoDuplo<T> noPrevio;
+    private NoDuplo<T> noProximo; //Referencia entre os Nos
+    private NoDuplo<T> noPrevio; //Referencia entre os Nos
 
     public NoDuplo(T conteudo) {
         this.conteudo = conteudo;
