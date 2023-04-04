@@ -52,6 +52,28 @@ public class ListaDuplamenteEncadeada<T> {
         }
     }
 
+    public void remove(int index){
+
+        if(index == 0){
+            primeiroNo = primeiroNo.getNoProximo(); //Primeiro no passa a ser o proximo na lista(Garbage colector fazendo)
+
+            if(primeiroNo != null){
+                primeiroNo.setNoPrevio(null);
+            }
+        }else{
+            NoDuplo<T> noAuxiliar = getNo(index); //getNo percorre todos os Nos da lista para retornar o index
+            noAuxiliar.getNoPrevio().setNoProximo(noAuxiliar.getNoProximo()); // Pega a referencia anterior do index e linka com o proximo do index
+
+            if(noAuxiliar != ultimoNo){
+                noAuxiliar.getNoProximo().setNoPrevio(noAuxiliar.getNoPrevio()); //Pega a referencia posterior do index e linka com o anterior do index.
+            }else{
+                ultimoNo = noAuxiliar; //Seta o index como ultimo no
+            }
+        }
+
+        this.tamanhoLista--;
+    }
+
     private NoDuplo<T> getNo(int index){
         NoDuplo<T> noAuxiliar = primeiroNo; //Cria um noAuxiliar atribuindo o valor de primeiroNo
 
@@ -64,5 +86,20 @@ public class ListaDuplamenteEncadeada<T> {
 
     public int size(){
         return this.tamanhoLista;
+    }
+
+    @Override
+    public String toString(){
+        String strRetorno = "";
+        NoDuplo<T> noAuxiliar = primeiroNo;
+
+        for(int i = 0; i < size(); i++){
+            strRetorno += "[No{conteudo = " + noAuxiliar.getConteudo() + "}] ---> ";
+            noAuxiliar = noAuxiliar.getNoProximo();
+        }
+
+        strRetorno += "null";
+
+        return strRetorno;
     }
 }
