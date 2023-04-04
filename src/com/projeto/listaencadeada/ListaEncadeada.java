@@ -37,7 +37,7 @@ public class ListaEncadeada<T> {
         No<T> noAuxiliar = referenciaEntrada;
         No<T> noRetorno = null;
 
-        for(int i = 0; i < this.size()-1; i++){
+        for(int i = 0; i <= index; i++){
             noRetorno = noAuxiliar;
             noAuxiliar = noAuxiliar.getProximoNo(); //Percorre a Lista para ir ate o final e inserir o novoNo
         }
@@ -85,7 +85,7 @@ public class ListaEncadeada<T> {
     private void validaIndice(int index){
         if(index >= size()){ //Excecao caso o index seja maior que o tamanho da lista
             int ultimoIndice = size() - 1;
-            throw new IndexOutOfBoundsException("Nao existe conteudo no indice" + index + " desta lista. Esta lista so vai ate o indice " + ultimoIndice);
+            throw new IndexOutOfBoundsException("Nao existe conteudo no indice " + index + " desta lista. Esta lista so vai ate o indice " + ultimoIndice);
         }
     }
 
