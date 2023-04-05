@@ -55,10 +55,10 @@ public class ListaDuplamenteEncadeada<T> {
     public void remove(int index){
 
         if(index == 0){
-            primeiroNo = primeiroNo.getNoProximo(); //Primeiro no passa a ser o proximo na lista(Garbage colector fazendo)
+            primeiroNo = primeiroNo.getNoProximo(); //O proximo da lista passa a ser o primeiro(Garbage colector fazendo)
 
             if(primeiroNo != null){
-                primeiroNo.setNoPrevio(null);
+                primeiroNo.setNoPrevio(null);// A referencia anterior ao Primeiro item passa a ser Null
             }
         }else{
             NoDuplo<T> noAuxiliar = getNo(index); //getNo percorre todos os Nos da lista para retornar o index
