@@ -12,14 +12,14 @@ public class ListaCircular<T> {
         this.cauda = null;
         this.tamanhoLista = 0;
     }
-    
+
     public void add(T elemento){
         No<T> novoNo = new No<>(elemento);
 
-        if(this.tamanhoLista == 0){
+        if(this.tamanhoLista == 0){ //Caso Primeiro da Lista, set novoNo como ambos cabeca e cauda;
             this.cabeca = novoNo;
             this.cauda = cabeca;
-        }else{
+        }else{// Caso outro index colocar novoNo como ultimo(Atras da antiga cauda) e referenciar para a cabeça.
             novoNo.setNoProximo(this.cauda);
             this.cabeca.setNoProximo(novoNo);
             this.cauda = novoNo;
@@ -66,7 +66,7 @@ public class ListaCircular<T> {
         No<T> noAuxiliar = cauda;
 
         for(int i = 0; (i < index) && (noAuxiliar != null); i++){
-            noAuxiliar = noAuxiliar.getNoProximo(); //Percore o No até o index;
+            noAuxiliar = noAuxiliar.getNoProximo(); //Percorre o No até o index;
         }
         return noAuxiliar;
     }
@@ -77,5 +77,21 @@ public class ListaCircular<T> {
 
     public int size(){
         return this.tamanhoLista;
+    }
+
+    @Override
+    public String toString() {
+        String strRetorno = "";
+        No<T> noAuxiliar = this.cauda;
+
+        for(int i = 0; i < this.size(); i++){
+            strRetorno += "{No[" + noAuxiliar.getConteudo() + "]} ---->";
+            noAuxiliar = noAuxiliar.getNoProximo();
+        }
+
+        strRetorno += isEmpty() ? 0 : this.cauda.getConteudo() + "...";
+
+
+        return strRetorno;
     }
 }
