@@ -7,14 +7,24 @@ public class ListaCircular<T> {
 
     private int tamanhoLista;
 
-    public ListaCircular(No<T> cabeca, No<T> cauda) {
+    public ListaCircular() {
         this.cabeca = null;
         this.cauda = null;
         this.tamanhoLista = 0;
     }
+    
+    public void add(T elemento){
+        No<T> novoNo = new No<>(elemento);
 
-    public void add(){
-        
+        if(this.tamanhoLista == 0){
+            this.cabeca = novoNo;
+            this.cauda = cabeca;
+        }else{
+            novoNo.setNoProximo(this.cauda);
+            this.cabeca.setNoProximo(novoNo);
+            this.cauda = novoNo;
+        }
+        this.tamanhoLista++;
     }
 
     public void remove(int index){

@@ -5,7 +5,7 @@ public class No<T> {
     private T conteudo; //Onde fica armazenado o valor da lista
     private No<T> noProximo; //Responsavel por encadear os Nos
 
-    public No(T conteudo, No<T> noProximo) {
+    public No(T conteudo) {
         this.conteudo = conteudo;
         this.noProximo = null;
     }
